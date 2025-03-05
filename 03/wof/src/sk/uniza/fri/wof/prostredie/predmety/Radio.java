@@ -16,16 +16,19 @@ public class Radio implements Predmet {
 
     @Override
     public void pouzi(Hrac hrac) {
-        if (this.maBaterky) {
-            System.out.println("Radio hra, lalala");
-        } else {
-            System.out.println("Radio nema baterky");
-        }
+
     }
 
     @Override
     public boolean mozemPolozit() {
         return true;
+    }
+
+    @Override
+    public void hracSaPohol() {
+        if (this.maBaterky) {
+            System.out.println("Radio hra, lalala");
+        }
     }
 
     public void vlozBaterky() {

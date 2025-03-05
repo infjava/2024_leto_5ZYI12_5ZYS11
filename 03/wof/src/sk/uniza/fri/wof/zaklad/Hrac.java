@@ -26,6 +26,10 @@ public class Hrac {
         } else {
             this.aktualnaMiestnost = vychod.get().dajMiestnost();
             this.aktualnaMiestnost.vypisInfoOMiestnosti();
+
+            for (var predmet : this.inventar.values()) {
+                predmet.hracSaPohol();
+            }
         }
     }
 
