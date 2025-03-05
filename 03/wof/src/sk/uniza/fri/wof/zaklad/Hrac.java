@@ -4,6 +4,7 @@ import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.predmety.Baterky;
 import sk.uniza.fri.wof.prostredie.predmety.Pouzitelny;
 import sk.uniza.fri.wof.prostredie.predmety.Predmet;
+import sk.uniza.fri.wof.prostredie.predmety.ReakciaNaPohyb;
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -29,7 +30,9 @@ public class Hrac {
             this.aktualnaMiestnost.vypisInfoOMiestnosti();
 
             for (var predmet : this.inventar.values()) {
-                predmet.hracSaPohol();
+                if (predmet instanceof ReakciaNaPohyb reakciaNaPohyb) {
+                    reakciaNaPohyb.hracSaPohol();
+                }
             }
         }
     }

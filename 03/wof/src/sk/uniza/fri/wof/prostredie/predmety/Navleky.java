@@ -31,11 +31,6 @@ public class Navleky implements Predmet, Pouzitelny {
         return !this.suObute;
     }
 
-    @Override
-    public void hracSaPohol() {
-
-    }
-
     public boolean jeNasadeny() {
         return this.suObute;
     }
