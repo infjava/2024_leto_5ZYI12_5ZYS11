@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.prostredie;
 
 import sk.uniza.fri.wof.prostredie.predmety.*;
+import sk.uniza.fri.wof.prostredie.vybavenie.Automat;
 import sk.uniza.fri.wof.prostredie.vychody.VstupDoLabaku;
 
 public class HernySvet {
@@ -28,8 +29,9 @@ public class HernySvet {
         terasa.polozPredmet(new Navleky());
         terasa.polozPredmet(new Baterky());
         terasa.polozPredmet(new Radio());
-        terasa.polozPredmet(new Dobrota("bageta", 4));
-        terasa.polozPredmet(new Dobrota("mineralka", 2));
+//        terasa.polozPredmet(new Dobrota("bageta", "bagetu", 4));
+//        terasa.polozPredmet(new Dobrota("mineralka", "mineralku", 2));
+        terasa.vlozVybavenie(new Automat());
         labak.polozPredmet(new ObycajnyPredmet("mys"));
         bufet.polozPredmet(new ObycajnyPredmet("bageta"));
 
