@@ -1,6 +1,7 @@
 package sk.uniza.fri.wof.zaklad;
 
 import sk.uniza.fri.wof.prostredie.Miestnost;
+import sk.uniza.fri.wof.prostredie.predmety.Baterky;
 import sk.uniza.fri.wof.prostredie.predmety.Predmet;
 
 import java.util.HashMap;
@@ -76,10 +77,14 @@ public class Hrac {
             System.out.println("Tento predmet nemáš");
             return;
         }
-        predmet.pouzi();
+        predmet.pouzi(this);
     }
 
     public Miestnost getAktualnaMiestnost() {
         return this.aktualnaMiestnost;
+    }
+
+    public void odstranPredmet(Predmet predmet) {
+        this.inventar.remove(predmet.getNazov());
     }
 }
