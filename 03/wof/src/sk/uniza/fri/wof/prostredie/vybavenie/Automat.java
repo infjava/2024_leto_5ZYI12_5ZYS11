@@ -1,6 +1,9 @@
 package sk.uniza.fri.wof.prostredie.vybavenie;
 
-public class Automat implements Vybavenie {
+import sk.uniza.fri.wof.prostredie.predmety.Pouzitelny;
+import sk.uniza.fri.wof.zaklad.Hrac;
+
+public class Automat implements Vybavenie, Pouzitelny {
     @Override
     public String getNazov() {
         return "automat";
@@ -9,5 +12,10 @@ public class Automat implements Vybavenie {
     @Override
     public String getPopis() {
         return "výpredaj bagiet a minerálok";
+    }
+
+    @Override
+    public void pouzi(Hrac hrac) {
+        System.out.println("Skusas nieco kupit z automatu");
     }
 }
