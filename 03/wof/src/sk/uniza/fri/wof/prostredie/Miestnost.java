@@ -97,4 +97,8 @@ public class Miestnost {
     public void vlozVybavenie(Vybavenie vybavenie) {
         this.vybavenie.put(vybavenie.getNazov(), vybavenie);
     }
+
+    public Optional<Vybavenie> najdiVybavenie(String nazov) {
+        return Optional.ofNullable(this.vybavenie.get(nazov));
+    }
 }

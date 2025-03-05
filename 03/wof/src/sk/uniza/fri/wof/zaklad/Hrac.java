@@ -82,7 +82,16 @@ public class Hrac {
     public void pouziPredmet(String nazov) {
         var predmet = this.inventar.get(nazov);
         if (predmet == null) {
-            System.out.println("Tento predmet nemáš");
+            var vybavenie = this.aktualnaMiestnost.najdiVybavenie(nazov);
+            if (vybavenie.isPresent()) {
+                if (vybavenie.get() instanceof Pouzitelny pouzitelneVybavenie) {
+                    pouzitelneVybavenie.pouzi(this);
+                } else {
+                    System.out.printf("Vybavenie %s sa použiť nedá%n", nazov);
+                }
+            } else {
+                System.out.format("%s nikde nevidis%n", nazov);
+            }
             return;
         }
         if (predmet instanceof Pouzitelny pouzitelnyPredmet) {
