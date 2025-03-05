@@ -15,11 +15,6 @@ public class Radio implements Predmet {
     }
 
     @Override
-    public void pouzi(Hrac hrac) {
-
-    }
-
-    @Override
     public boolean mozemPolozit() {
         return true;
     }

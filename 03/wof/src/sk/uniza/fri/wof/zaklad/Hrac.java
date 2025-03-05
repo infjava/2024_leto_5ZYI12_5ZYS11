@@ -2,6 +2,7 @@ package sk.uniza.fri.wof.zaklad;
 
 import sk.uniza.fri.wof.prostredie.Miestnost;
 import sk.uniza.fri.wof.prostredie.predmety.Baterky;
+import sk.uniza.fri.wof.prostredie.predmety.Pouzitelny;
 import sk.uniza.fri.wof.prostredie.predmety.Predmet;
 
 import java.util.HashMap;
@@ -81,7 +82,11 @@ public class Hrac {
             System.out.println("Tento predmet nemáš");
             return;
         }
-        predmet.pouzi(this);
+        if (predmet instanceof Pouzitelny pouzitelnyPredmet) {
+            pouzitelnyPredmet.pouzi(this);
+        } else {
+            System.out.printf("Predmet %s sa použiť nedá%n", nazov);
+        }
     }
 
     public Miestnost getAktualnaMiestnost() {
