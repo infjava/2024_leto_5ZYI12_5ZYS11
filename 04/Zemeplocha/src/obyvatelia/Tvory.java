@@ -25,6 +25,10 @@ public class Tvory {
         }
     }
 
+    public void rozmnoz(int kolkoKrat) {
+        this.populacia *= (kolkoKrat + 1);
+    }
+
     public int getPopulacia() {
         return this.populacia;
     }
