@@ -27,4 +27,9 @@ public class Magovia extends Tvory {
 
         return akcie;
     }
+
+    @Override
+    public Tvory vytvorTvory(int pocetTvorov) {
+        return new Magovia(pocetTvorov, this.koeficientMagie);
+    }
 }
