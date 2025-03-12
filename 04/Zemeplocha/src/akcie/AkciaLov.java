@@ -25,7 +25,9 @@ public class AkciaLov implements Akcia {
         var pocetTvorov = Integer.parseInt( JOptionPane.showInputDialog( null,
                 "Zadaj pocet lovcov, ktore idu na lov.") );
         Tvory ja = this.mojePolicko.getObyvatelia().orElseThrow();
-        if (pocetTvorov > ja.getPopulacia()) {
+        if (pocetTvorov < 0) {
+            JOptionPane.showMessageDialog(null, "Nie som si isty, ako by si to chcel dosiahnut.");
+        } else if (pocetTvorov > ja.getPopulacia()) {
             //tolko tvorov policko nema
             JOptionPane.showMessageDialog( null, "Nemas tolko lovcov.");
         } else {

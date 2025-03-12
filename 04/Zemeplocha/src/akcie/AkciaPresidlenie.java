@@ -31,7 +31,9 @@ public class AkciaPresidlenie implements Akcia {
         var pocetTvorov = Integer.parseInt( JOptionPane.showInputDialog( null,
                 "Zadaj pocet tvorov, ktore sa idu presidlit.") );
         Tvory ja = this.mojePolicko.getObyvatelia().orElseThrow();
-        if (pocetTvorov > ja.getPopulacia()) {
+        if (pocetTvorov < 0) {
+            JOptionPane.showMessageDialog(null, "Nie som si isty, ako by si to chcel dosiahnut.");
+        } else if (pocetTvorov > ja.getPopulacia()) {
             //tolko tvorov policko nema
             JOptionPane.showMessageDialog( null, "Zvolene tvory nemaju taky pocet obyvatelov.");
         } else {
