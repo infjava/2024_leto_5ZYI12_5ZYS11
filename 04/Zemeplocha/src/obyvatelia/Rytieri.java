@@ -12,6 +12,18 @@ public class Rytieri extends Tvory {
     }
 
     @Override
+    public ArrayList<Akcia> dajAkcieNa(Policko mojePolicko, Policko druhePolicko) {
+        ArrayList<Akcia> akcie = super.dajAkcieNa(mojePolicko, druhePolicko);
+
+        var cieloviObyvatelia = druhePolicko.getObyvatelia();
+        if (cieloviObyvatelia.isPresent() && !(cieloviObyvatelia.get() instanceof Zver)) {
+            akcie.add(new AkciaUtok(mojePolicko, druhePolicko));
+        }
+
+        return akcie;
+    }
+
+    @Override
     public Tvory vytvorTvory(int pocetTvorov) {
         return new Rytieri(pocetTvorov);
     }
