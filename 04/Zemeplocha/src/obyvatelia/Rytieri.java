@@ -11,7 +11,12 @@ public class Rytieri extends Ludia {
     }
 
     @Override
-    protected void prijmiUtok(int pocetUtocnikov) {
-        this.upravPopulaciu(-pocetUtocnikov);
+    protected int vypocitajSiluUtoku(int pocetUtocnikov) {
+        return pocetUtocnikov;
+    }
+
+    @Override
+    protected void prijmiUtok(int silaUtoku) {
+        this.upravPopulaciu(-silaUtoku);
     }
 }
