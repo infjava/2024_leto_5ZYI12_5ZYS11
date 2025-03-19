@@ -32,8 +32,14 @@ public class AkciaUtok implements Akcia {
             JOptionPane.showMessageDialog( null, "Nemas tolko rytierov.");
         } else {
             var napadnuti = this.druhePolicko.getObyvatelia().orElseThrow();
+
+            if (pocetUtocnikov > napadnuti.getPopulacia()) {
+                pocetUtocnikov = napadnuti.getPopulacia();
+            }
+
             napadnuti.upravPopulaciu(-pocetUtocnikov);
             ja.upravPopulaciu(-pocetUtocnikov);
+
             if (ja.getPopulacia() <= 0) {
                 this.mojePolicko.zruseniObyvatelia();
             }
