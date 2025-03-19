@@ -16,7 +16,7 @@ public class Rytieri extends Tvory {
         ArrayList<Akcia> akcie = super.dajAkcieNa(mojePolicko, druhePolicko);
 
         var cieloviObyvatelia = druhePolicko.getObyvatelia();
-        if (cieloviObyvatelia.isPresent() && !(cieloviObyvatelia.get() instanceof Zver)) {
+        if (cieloviObyvatelia.isPresent() && mojePolicko != druhePolicko && !(cieloviObyvatelia.get() instanceof Zver)) {
             akcie.add(new AkciaUtok(mojePolicko, druhePolicko));
         }
 
