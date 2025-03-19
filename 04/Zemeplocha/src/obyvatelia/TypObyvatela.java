@@ -6,7 +6,8 @@ public enum TypObyvatela {
     SRNKY ("#16a085", "deer.png"),
     ZAJACE ("#2ecc71", "rabbit.png" ),
     MAGOVIA ("#d35400", "wizard.png"),
-    LOVCI("#f39c12", "caveman.png");
+    LOVCI("#f39c12", "caveman.png"),
+    RYTIERI("#9b59b6", "knight.png");
 
 
     private final String farba;
