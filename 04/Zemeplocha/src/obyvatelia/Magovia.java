@@ -7,7 +7,7 @@ import hlavnyBalik.Policko;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class Magovia extends Tvory {
+public class Magovia extends Ludia {
     private final int koeficientMagie;
 
     public Magovia(int populacia, int koeficientMagie) {
@@ -31,5 +31,10 @@ public class Magovia extends Tvory {
     @Override
     public Tvory vytvorTvory(int pocetTvorov) {
         return new Magovia(pocetTvorov, this.koeficientMagie);
+    }
+
+    @Override
+    protected void prijmiUtok(int pocetUtocnikov) {
+
     }
 }

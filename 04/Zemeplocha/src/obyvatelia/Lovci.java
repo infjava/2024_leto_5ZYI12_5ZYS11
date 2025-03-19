@@ -6,7 +6,7 @@ import hlavnyBalik.Policko;
 
 import java.util.ArrayList;
 
-public class Lovci extends Tvory {
+public class Lovci extends Ludia {
     public Lovci(int populacia) {
         super(populacia, TypObyvatela.LOVCI);
     }
@@ -26,5 +26,10 @@ public class Lovci extends Tvory {
     @Override
     public Tvory vytvorTvory(int pocetTvorov) {
         return new Lovci(pocetTvorov);
+    }
+
+    @Override
+    protected void prijmiUtok(int pocetUtocnikov) {
+        this.upravPopulaciu(-2 * pocetUtocnikov);
     }
 }

@@ -6,7 +6,7 @@ import hlavnyBalik.Policko;
 
 import java.util.ArrayList;
 
-public class Rytieri extends Tvory {
+public class Rytieri extends Ludia {
     public Rytieri(int populacia) {
         super(populacia, TypObyvatela.RYTIERI);
     }
@@ -16,7 +16,7 @@ public class Rytieri extends Tvory {
         ArrayList<Akcia> akcie = super.dajAkcieNa(mojePolicko, druhePolicko);
 
         var cieloviObyvatelia = druhePolicko.getObyvatelia();
-        if (cieloviObyvatelia.isPresent() && mojePolicko != druhePolicko && !(cieloviObyvatelia.get() instanceof Zver)) {
+        if (cieloviObyvatelia.isPresent() && mojePolicko != druhePolicko && (cieloviObyvatelia.get() instanceof Ludia)) {
             akcie.add(new AkciaUtok(mojePolicko, druhePolicko));
         }
 
@@ -29,9 +29,9 @@ public class Rytieri extends Tvory {
     }
 
     public void zautoc(Policko mojePolicko, Policko druhePolicko, int pocetUtocnikov) {
-        var napadnuti = druhePolicko.getObyvatelia().orElseThrow();
+        var napadnuti = (Ludia)druhePolicko.getObyvatelia().orElseThrow();
 
-        napadnuti.upravPopulaciu(-pocetUtocnikov);
+        napadnuti.prijmiUtok(pocetUtocnikov);
         this.upravPopulaciu(-pocetUtocnikov);
 
         if (this.getPopulacia() <= 0) {
@@ -40,5 +40,10 @@ public class Rytieri extends Tvory {
         if (napadnuti.getPopulacia() <= 0) {
             druhePolicko.zruseniObyvatelia();
         }
+    }
+
+    @Override
+    protected void prijmiUtok(int pocetUtocnikov) {
+        this.upravPopulaciu(-pocetUtocnikov);
     }
 }
