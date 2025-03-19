@@ -27,7 +27,7 @@ public abstract class Ludia extends Tvory {
         var napadnuti = (Ludia)druhePolicko.getObyvatelia().orElseThrow();
 
         napadnuti.prijmiUtok(pocetUtocnikov);
-        this.upravPopulaciu(-pocetUtocnikov);
+        this.prijmiUtok(pocetUtocnikov);
 
         if (this.getPopulacia() <= 0) {
             mojePolicko.zruseniObyvatelia();
