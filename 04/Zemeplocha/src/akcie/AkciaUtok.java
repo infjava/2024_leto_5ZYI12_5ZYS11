@@ -1,6 +1,7 @@
 package akcie;
 
 import hlavnyBalik.Policko;
+import obyvatelia.Rytieri;
 import obyvatelia.Tvory;
 import zemeplocha.Zemeplocha;
 
@@ -24,7 +25,7 @@ public class AkciaUtok implements Akcia {
     public void vykonaj(Zemeplocha zemeplocha) {
         var pocetUtocnikov = Integer.parseInt( JOptionPane.showInputDialog( null,
                 "Zadaj pocet utocnikov.") );
-        Tvory ja = this.mojePolicko.getObyvatelia().orElseThrow();
+        Rytieri ja = (Rytieri) this.mojePolicko.getObyvatelia().orElseThrow();
         if (pocetUtocnikov < 0) {
             JOptionPane.showMessageDialog(null, "Nie som si isty, ako by si to chcel dosiahnut.");
         } else if (pocetUtocnikov > ja.getPopulacia()) {
@@ -37,15 +38,7 @@ public class AkciaUtok implements Akcia {
                 pocetUtocnikov = napadnuti.getPopulacia();
             }
 
-            napadnuti.upravPopulaciu(-pocetUtocnikov);
-            ja.upravPopulaciu(-pocetUtocnikov);
-
-            if (ja.getPopulacia() <= 0) {
-                this.mojePolicko.zruseniObyvatelia();
-            }
-            if (napadnuti.getPopulacia() <= 0) {
-                this.druhePolicko.zruseniObyvatelia();
-            }
+            ja.zautoc(this.mojePolicko, this.druhePolicko, pocetUtocnikov);
         }
     }
 }
