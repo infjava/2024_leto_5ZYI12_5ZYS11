@@ -47,16 +47,24 @@ public class KonzoloveMenu {
                     break;
                 case 3:
                     try {
-                        poleMatic[2] = poleMatic[0].vynasobMaticou(poleMatic[1]);
-                        System.out.println("Vysledok nasobenia ulozeny do matice C");
+                        if (poleMatic[0] != null && poleMatic[1] != null) {
+                            poleMatic[2] = poleMatic[0].vynasobMaticou(poleMatic[1]);
+                            System.out.println("Vysledok nasobenia ulozeny do matice C");
+                        } else {
+                            System.out.println("Operandy este neboli zadane");
+                        }
                     } catch (NespravnyRozmerException e) {
                         System.out.println("Tieto matice sa nedaju vynasobit, maju nespravne rozmery");
                     }
                     break;
                 case 4:
                     try {
-                        poleMatic[2] = poleMatic[0].vydelMaticePoPrvkoch(poleMatic[1]);
-                        System.out.println("Vysledok delenia po prvkoch ulozeny do matice C");
+                        if (poleMatic[0] != null && poleMatic[1] != null) {
+                            poleMatic[2] = poleMatic[0].vydelMaticePoPrvkoch(poleMatic[1]);
+                            System.out.println("Vysledok delenia po prvkoch ulozeny do matice C");
+                        } else {
+                            System.out.println("Operandy este neboli zadane");
+                        }
                     } catch (NespravnyRozmerException e) {
                         System.out.println("Tieto matice sa nedaju vydelit, maju nespravne rozmery");
                     }
