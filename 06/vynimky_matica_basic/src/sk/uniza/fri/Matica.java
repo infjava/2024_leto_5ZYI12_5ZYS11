@@ -55,10 +55,9 @@ public class Matica {
         return new Matica(vysledok);
     }
     // operacia jednej s druhou
-    public Matica vynasobMaticou(Matica mat2) {
+    public Matica vynasobMaticou(Matica mat2) throws NespravnyRozmerException {
         if (this.getPocetStlpcov() != mat2.getPocetRiadkov()) {
-            System.out.println("Tieto matice sa nedaju vynasobit, maju nespravne rozmery");
-            return null;
+            throw new NespravnyRozmerException();
         }
 
         double[][] result = new double[ this.pocetRiadkov][mat2.pocetStlpcov];

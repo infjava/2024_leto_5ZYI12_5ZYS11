@@ -46,10 +46,11 @@ public class KonzoloveMenu {
                     }
                     break;
                 case 3:
-                    var vysledokNasobenia = poleMatic[0].vynasobMaticou(poleMatic[1]);
-                    if (vysledokNasobenia != null) {
-                        poleMatic[2] = vysledokNasobenia;
+                    try {
+                        poleMatic[2] = poleMatic[0].vynasobMaticou(poleMatic[1]);
                         System.out.println("Vysledok nasobenia ulozeny do matice C");
+                    } catch (NespravnyRozmerException e) {
+                        System.out.println("Tieto matice sa nedaju vynasobit, maju nespravne rozmery");
                     }
                     break;
                 case 4:
