@@ -60,7 +60,7 @@ public class KonzoloveMenu {
                 case 4:
                     try {
                         if (poleMatic[0] != null && poleMatic[1] != null) {
-                            poleMatic[2] = poleMatic[0].vydelMaticePoPrvkoch(poleMatic[1]);
+                            poleMatic[2] = poleMatic[0].vykonajOperaciuPoPrvkoch(poleMatic[1], new Delenie());
                             System.out.println("Vysledok delenia po prvkoch ulozeny do matice C");
                         } else {
                             System.out.println("Operandy este neboli zadane");
@@ -72,7 +72,7 @@ public class KonzoloveMenu {
                 case 5:
                     try {
                         if (poleMatic[0] != null && poleMatic[1] != null) {
-                            poleMatic[2] = poleMatic[0].scitajMatice(poleMatic[1]);
+                            poleMatic[2] = poleMatic[0].vykonajOperaciuPoPrvkoch(poleMatic[1], new Scitanie());
                             System.out.println("Vysledok scitania po prvkoch ulozeny do matice C");
                         } else {
                             System.out.println("Operandy este neboli zadane");

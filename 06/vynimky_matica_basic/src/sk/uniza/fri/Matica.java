@@ -46,7 +46,7 @@ public class Matica {
         return this.polePrvkov[i][j];
     }
 
-    public Matica scitajMatice(Matica mat2) throws NespravnyRozmerException {
+    public Matica vykonajOperaciuPoPrvkoch(Matica mat2, Operacia operacia) throws NespravnyRozmerException {
         if (mat2 == null) {
             throw new InvalidParameterException("mat2 nemoze byt null");
         }
@@ -58,25 +58,7 @@ public class Matica {
         double[][] vysledok = new double[this.pocetRiadkov][this.pocetStlpcov];
         for (int i = 0; i < vysledok.length; i++) {
             for (int j = 0; j < vysledok[0].length; j++) {
-                vysledok[i][j] = this.dajPrvok(i, j) + mat2.dajPrvok(i, j);
-            }
-        }
-        return new Matica(vysledok);
-    }
-
-    public Matica vydelMaticePoPrvkoch(Matica mat2) throws NespravnyRozmerException {
-        if (mat2 == null) {
-            throw new InvalidParameterException("mat2 nemoze byt null");
-        }
-
-        if (this.getPocetStlpcov() != mat2.getPocetStlpcov() || this.getPocetRiadkov() != mat2.getPocetRiadkov()) {
-            throw new NespravnyRozmerException();
-        }
-
-        double[][] vysledok = new double[this.pocetRiadkov][this.pocetStlpcov];
-        for (int i = 0; i < vysledok.length; i++) {
-            for (int j = 0; j < vysledok[0].length; j++) {
-                vysledok[i][j] = this.dajPrvok(i, j) / mat2.dajPrvok(i, j);
+                vysledok[i][j] = operacia.vykonaj(this.dajPrvok(i, j), mat2.dajPrvok(i, j));
             }
         }
         return new Matica(vysledok);
