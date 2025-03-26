@@ -1,6 +1,7 @@
 package sk.uniza.fri;
 
 
+import java.security.InvalidParameterException;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -46,6 +47,10 @@ public class Matica {
     }
 
     public Matica vydelMaticePoPrvkoch(Matica mat2) throws NespravnyRozmerException {
+        if (mat2 == null) {
+            throw new InvalidParameterException("mat2 nemoze byt null");
+        }
+
         if (this.getPocetStlpcov() != mat2.getPocetStlpcov() || this.getPocetRiadkov() != mat2.getPocetRiadkov()) {
             throw new NespravnyRozmerException();
         }
@@ -60,6 +65,10 @@ public class Matica {
     }
     // operacia jednej s druhou
     public Matica vynasobMaticou(Matica mat2) throws NespravnyRozmerException {
+        if (mat2 == null) {
+            throw new InvalidParameterException("mat2 nemoze byt null");
+        }
+
         if (this.getPocetStlpcov() != mat2.getPocetRiadkov()) {
             throw new NespravnyRozmerException();
         }
