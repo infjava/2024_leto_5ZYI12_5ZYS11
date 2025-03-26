@@ -46,11 +46,10 @@ public class KonzoloveMenu {
                     }
                     break;
                 case 3:
-                    if (poleMatic[0].getPocetStlpcov() == poleMatic[1].getPocetRiadkov()) {
-                        poleMatic[2] = poleMatic[0].vynasobMaticou(poleMatic[1]);
+                    var vysledokNasobenia = poleMatic[0].vynasobMaticou(poleMatic[1]);
+                    if (vysledokNasobenia != null) {
+                        poleMatic[2] = vysledokNasobenia;
                         System.out.println("Vysledok nasobenia ulozeny do matice C");
-                    } else {
-                        System.out.println("Tieto matice sa nedaju vynasobit, maju nespravne rozmery");
                     }
                     break;
                 case 4:
