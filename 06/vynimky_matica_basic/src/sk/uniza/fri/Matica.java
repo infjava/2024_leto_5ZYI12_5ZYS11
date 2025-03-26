@@ -58,7 +58,11 @@ public class Matica {
         double[][] vysledok = new double[this.pocetRiadkov][this.pocetStlpcov];
         for (int i = 0; i < vysledok.length; i++) {
             for (int j = 0; j < vysledok[0].length; j++) {
-                vysledok[i][j] = operacia.vykonaj(this.dajPrvok(i, j), mat2.dajPrvok(i, j));
+                try {
+                    vysledok[i][j] = operacia.vykonaj(this.dajPrvok(i, j), mat2.dajPrvok(i, j));
+                } catch (Exception e) {
+                    throw new ChybaNaPrvkuException(i, j, e);
+                }
             }
         }
         return new Matica(vysledok);
