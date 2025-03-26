@@ -65,6 +65,8 @@ public class KonzoloveMenu {
                         } else {
                             System.out.println("Operandy este neboli zadane");
                         }
+                    } catch (ArithmeticException e) {
+                        System.out.println("Delenie nulou");
                     } catch (NespravnyRozmerException e) {
                         System.out.println("Tieto matice sa nedaju vydelit, maju nespravne rozmery");
                     }
