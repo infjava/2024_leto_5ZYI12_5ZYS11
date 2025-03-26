@@ -45,7 +45,11 @@ public class Matica {
         return this.polePrvkov[i][j];
     }
 
-    public Matica vydelMaticePoPrvkoch(Matica mat2) {
+    public Matica vydelMaticePoPrvkoch(Matica mat2) throws NespravnyRozmerException {
+        if (this.getPocetStlpcov() != mat2.getPocetStlpcov() || this.getPocetRiadkov() != mat2.getPocetRiadkov()) {
+            throw new NespravnyRozmerException();
+        }
+
         double[][] vysledok = new double[this.pocetRiadkov][this.pocetStlpcov];
         for (int i = 0; i < vysledok.length; i++) {
             for (int j = 0; j < vysledok[0].length; j++) {
