@@ -9,20 +9,20 @@ public class Main {
 
         var popisok = new JLabel("Chceš úspešne absolvovať predmet Informatika 2?");
 
-        var anoTlacitko = new JButton("áno");
-        var nieTlacitko = new JButton("nie");
+        var laveTlacitko = new JButton("áno");
+        var praveTlacitko = new JButton("nie");
 
-        nieTlacitko.setFocusable(false);
+        praveTlacitko.setFocusable(false);
 
-        anoTlacitko.addMouseListener(new VymenTlacitka(nieTlacitko, anoTlacitko));
-        nieTlacitko.addMouseListener(new VymenTlacitka(anoTlacitko, nieTlacitko));
+        laveTlacitko.addMouseListener(new VymenTlacitka(praveTlacitko, laveTlacitko));
+        praveTlacitko.addMouseListener(new VymenTlacitka(laveTlacitko, praveTlacitko));
 
         var tlacitka = new JPanel(new GridLayout(1, 2));
 
         okno.add(popisok, BorderLayout.NORTH);
 
-        tlacitka.add(anoTlacitko);
-        tlacitka.add(nieTlacitko);
+        tlacitka.add(laveTlacitko);
+        tlacitka.add(praveTlacitko);
 
         okno.add(tlacitka, BorderLayout.CENTER);
 
