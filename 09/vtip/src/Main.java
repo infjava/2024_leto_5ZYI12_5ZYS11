@@ -24,6 +24,11 @@ public class Main {
             System.exit(0);
         });
 
+        praveTlacitko.addActionListener(e -> {
+            JOptionPane.showMessageDialog(okno, "No vidíš, tak sa snaž!");
+            System.exit(0);
+        });
+
         var tlacitka = new JPanel(new GridLayout(1, 2));
 
         okno.add(popisok, BorderLayout.NORTH);
