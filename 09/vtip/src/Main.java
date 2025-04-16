@@ -7,8 +7,6 @@ public class Main {
 
         okno.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        okno.setLayout(new BorderLayout());
-
         var popisok = new JLabel("Chceš úspešne absolvovať predmet Informatika 2?");
 
         var anoTlacitko = new JButton("áno");
