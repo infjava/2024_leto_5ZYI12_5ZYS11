@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class ZoznamStudentov {
     private final JFrame okno;
+    private final DefaultListModel<Student> studenti;
     private JList zoznam;
     private JPanel obsahOkna;
     private JTextField meno;
@@ -15,6 +16,13 @@ public class ZoznamStudentov {
         this.okno = new JFrame("Zoznam študentov");
         this.okno.add(this.obsahOkna);
         this.okno.pack();
+
+        this.studenti = new DefaultListModel<Student>();
+        this.zoznam.setModel(this.studenti);
+
+        this.studenti.addElement(new Student("Jožko", "Mrkvička", 1853));
+        this.studenti.addElement(new Student("Jožko", "Mrkvička", 1853));
+        this.studenti.addElement(new Student("A", "B", 200));
     }
 
     public void zobraz() {
