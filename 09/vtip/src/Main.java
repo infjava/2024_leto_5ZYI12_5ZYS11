@@ -3,6 +3,13 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
+        //noinspection CatchMayIgnoreException
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+
+        }
+
         var okno = new JFrame("Dôležitá otázka");
 
         okno.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
