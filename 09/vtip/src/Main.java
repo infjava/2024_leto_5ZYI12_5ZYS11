@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +18,14 @@ public class Main {
 
         laveTlacitko.addMouseListener(new VymenTlacitka(praveTlacitko, laveTlacitko));
         praveTlacitko.addMouseListener(new VymenTlacitka(laveTlacitko, praveTlacitko));
+
+        laveTlacitko.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(okno, "No vidíš, tak sa snaž!");
+                System.exit(0);
+            }
+        });
 
         var tlacitka = new JPanel(new GridLayout(1, 2));
 
