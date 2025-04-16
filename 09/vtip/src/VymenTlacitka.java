@@ -15,6 +15,9 @@ public class VymenTlacitka extends MouseAdapter {
     @Override
     public void mouseEntered(MouseEvent e) {
         this.noveNieTlacitko.setText("nie");
+        this.noveNieTlacitko.setFocusable(false);
         this.noveAnoTlacitko.setText("áno");
+        this.noveAnoTlacitko.setFocusable(true);
+        this.noveAnoTlacitko.grabFocus();
     }
 }

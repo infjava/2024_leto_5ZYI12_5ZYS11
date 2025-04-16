@@ -12,6 +12,8 @@ public class Main {
         var anoTlacitko = new JButton("áno");
         var nieTlacitko = new JButton("nie");
 
+        nieTlacitko.setFocusable(false);
+
         anoTlacitko.addMouseListener(new VymenTlacitka(nieTlacitko, anoTlacitko));
         nieTlacitko.addMouseListener(new VymenTlacitka(anoTlacitko, nieTlacitko));
 
