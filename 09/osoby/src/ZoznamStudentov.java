@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class ZoznamStudentov {
     private final JFrame okno;
@@ -20,7 +22,32 @@ public class ZoznamStudentov {
         this.studenti = new DefaultListModel<Student>();
         this.zoznam.setModel(this.studenti);
 
+        this.meno.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                ZoznamStudentov.this.vlastnostiSaZmenili();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                ZoznamStudentov.this.vlastnostiSaZmenili();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                ZoznamStudentov.this.vlastnostiSaZmenili();
+            }
+        });
+
         this.pridat.addActionListener(e -> this.pridatStudenta());
+    }
+
+    private void vlastnostiSaZmenili() {
+        var spravneMeno = !this.meno.getText().isBlank();
+        var spravnePriezvisko = !this.priezvisko.getText().isBlank();
+        var spravnyRokNarodenia = !this.rokNarodenia.getText().isBlank();
+
+        this.pridat.setEnabled(spravneMeno && spravnePriezvisko && spravnyRokNarodenia);
     }
 
     private void pridatStudenta() {
