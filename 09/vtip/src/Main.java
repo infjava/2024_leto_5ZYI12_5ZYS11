@@ -12,9 +12,14 @@ public class Main {
         var anoTlacitko = new JButton("áno");
         var nieTlacitko = new JButton("nie");
 
+        var tlacitka = new JPanel(new GridLayout(1, 2));
+
         okno.add(popisok, BorderLayout.NORTH);
-        okno.add(anoTlacitko, BorderLayout.WEST);
-        okno.add(nieTlacitko, BorderLayout.EAST);
+
+        tlacitka.add(anoTlacitko);
+        tlacitka.add(nieTlacitko);
+
+        okno.add(tlacitka, BorderLayout.CENTER);
 
         okno.pack();
 
