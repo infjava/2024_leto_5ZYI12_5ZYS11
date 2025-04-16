@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         var okno = new JFrame("Dôležitá otázka");
 
-        okno.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        okno.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         var popisok = new JLabel("Chceš úspešne absolvovať predmet Informatika 2?");
 
