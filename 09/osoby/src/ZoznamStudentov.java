@@ -63,9 +63,9 @@ public class ZoznamStudentov {
         if (vysledok == JFileChooser.APPROVE_OPTION) {
             var subor = vyberSuboru.getSelectedFile();
             try (var zapisovac = new ObjectOutputStream(new FileOutputStream(subor))) {
-
+                zapisovac.writeObject(this.studenti);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa ulozit");
+                JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa ulozit. Chyba: " + e.getMessage());
             }
         }
     }

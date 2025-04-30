@@ -1,4 +1,6 @@
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private final String meno;
     private final String priezvisko;
     private final int rokNarodenia;
