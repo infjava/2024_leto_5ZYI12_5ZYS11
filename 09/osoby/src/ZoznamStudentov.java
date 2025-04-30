@@ -1,14 +1,11 @@
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class ZoznamStudentov {
     private final JFrame okno;
-    private final DefaultListModel<Student> studenti;
+    private DefaultListModel<Student> studenti;
     private JList zoznam;
     private JPanel obsahOkna;
     private JTextField meno;
@@ -52,7 +49,22 @@ public class ZoznamStudentov {
     }
 
     private void nacitatZoSuboru() {
+        var vyberSuboru = new JFileChooser();
 
+        var vysledok = vyberSuboru.showOpenDialog(this.okno);
+
+        if (vysledok == JFileChooser.APPROVE_OPTION) {
+            var subor = vyberSuboru.getSelectedFile();
+
+            try (var citac = new ObjectInputStream(new FileInputStream(subor))) {
+                var nacitanyZoznam = (DefaultListModel<Student>) citac.readObject();
+
+                this.studenti = nacitanyZoznam;
+                this.zoznam.setModel(this.studenti);
+            } catch (IOException | ClassNotFoundException e) {
+                JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa nacitat. Chyba: " + e.getMessage());
+            }
+        }
     }
 
     private void ulozitDoSuboru() {
