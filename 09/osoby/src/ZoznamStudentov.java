@@ -59,12 +59,27 @@ public class ZoznamStudentov {
         if (vysledok == JFileChooser.APPROVE_OPTION) {
             var subor = vyberSuboru.getSelectedFile();
 
-            try (var citac = new ObjectInputStream(new FileInputStream(subor))) {
-                var nacitanyZoznam = (DefaultListModel<Student>) citac.readObject();
+            try (var citac = new DataInputStream(new FileInputStream(subor))) {
+                var magicNumber = citac.readInt();
+                if (SUBOR_MAGIC_NUMBER != magicNumber) {
+                    JOptionPane.showMessageDialog(this.okno, "Toto nie je subor vytvoreny nasim programom!");
+                    return;
+                }
 
-                this.studenti = nacitanyZoznam;
-                this.zoznam.setModel(this.studenti);
-            } catch (IOException | ClassNotFoundException e) {
+                var verzia = citac.readInt();
+                if (SUBOR_VERZIA < verzia) {
+                    JOptionPane.showMessageDialog(this.okno, "Tento subor bol vytvoreny novsou verziou nasho programu! Posli peniaze, posleme novu verziu.");
+                    return;
+                }
+
+                this.studenti.clear();
+
+                var pocetStudentov = citac.readInt();
+                for (int i = 0; i < pocetStudentov; i++) {
+                    this.studenti.addElement(Student.nacitatZoSuboru(citac));
+                }
+
+            } catch (IOException e) {
                 JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa nacitat. Chyba: " + e.getMessage());
             }
         }
