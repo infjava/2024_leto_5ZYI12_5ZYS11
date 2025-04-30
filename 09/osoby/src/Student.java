@@ -40,10 +40,15 @@ public class Student {
         zapisovac.writeLong(this.rokNarodenia);
     }
 
-    public static Student nacitatZoSuboru(DataInputStream citac) throws IOException {
+    public static Student nacitatZoSuboru(DataInputStream citac, int verzia) throws IOException {
         var meno = citac.readUTF();
         var priezvisko = citac.readUTF();
-        var rokNarodenia = citac.readLong();
+        long rokNarodenia;
+        if (verzia >= 2) {
+            rokNarodenia = citac.readLong();
+        } else {
+            rokNarodenia = citac.readInt();
+        }
 
         return new Student(meno, priezvisko, rokNarodenia);
     }

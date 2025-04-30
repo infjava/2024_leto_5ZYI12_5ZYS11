@@ -76,7 +76,7 @@ public class ZoznamStudentov {
 
                 var pocetStudentov = citac.readInt();
                 for (int i = 0; i < pocetStudentov; i++) {
-                    this.studenti.addElement(Student.nacitatZoSuboru(citac));
+                    this.studenti.addElement(Student.nacitatZoSuboru(citac, verzia));
                 }
 
             } catch (IOException e) {
