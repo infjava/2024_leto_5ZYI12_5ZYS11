@@ -5,7 +5,7 @@ import java.io.*;
 
 public class ZoznamStudentov {
     private static final int SUBOR_MAGIC_NUMBER = 564564613;
-    private static final int SUBOR_VERZIA = 1;
+    private static final int SUBOR_VERZIA = 2;
 
     private final JFrame okno;
     private DefaultListModel<Student> studenti;

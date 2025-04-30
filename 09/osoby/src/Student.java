@@ -5,9 +5,9 @@ import java.io.IOException;
 public class Student {
     private final String meno;
     private final String priezvisko;
-    private final int rokNarodenia;
+    private final long rokNarodenia;
 
-    public Student(String meno, String priezvisko, int rokNarodenia) {
+    public Student(String meno, String priezvisko, long rokNarodenia) {
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.rokNarodenia = rokNarodenia;
@@ -21,7 +21,7 @@ public class Student {
         return this.priezvisko;
     }
 
-    public int getRokNarodenia() {
+    public long getRokNarodenia() {
         return this.rokNarodenia;
     }
 
@@ -37,13 +37,13 @@ public class Student {
     public void ulozitDoSuboru(DataOutputStream zapisovac) throws IOException {
         zapisovac.writeUTF(this.meno);
         zapisovac.writeUTF(this.priezvisko);
-        zapisovac.writeInt(this.rokNarodenia);
+        zapisovac.writeLong(this.rokNarodenia);
     }
 
     public static Student nacitatZoSuboru(DataInputStream citac) throws IOException {
         var meno = citac.readUTF();
         var priezvisko = citac.readUTF();
-        var rokNarodenia = citac.readInt();
+        var rokNarodenia = citac.readLong();
 
         return new Student(meno, priezvisko, rokNarodenia);
     }
