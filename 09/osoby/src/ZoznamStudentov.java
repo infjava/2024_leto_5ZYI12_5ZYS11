@@ -1,6 +1,10 @@
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class ZoznamStudentov {
     private final JFrame okno;
@@ -52,7 +56,18 @@ public class ZoznamStudentov {
     }
 
     private void ulozitDoSuboru() {
+        var vyberSuboru = new JFileChooser();
 
+        var vysledok = vyberSuboru.showSaveDialog(this.okno);
+
+        if (vysledok == JFileChooser.APPROVE_OPTION) {
+            var subor = vyberSuboru.getSelectedFile();
+            try (var zapisovac = new ObjectOutputStream(new FileOutputStream(subor))) {
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa ulozit");
+            }
+        }
     }
 
     private void vlastnostiSaZmenili() {
