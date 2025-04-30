@@ -4,6 +4,9 @@ import javax.swing.event.DocumentListener;
 import java.io.*;
 
 public class ZoznamStudentov {
+    private static final int SUBOR_MAGIC_NUMBER = 564564613;
+    private static final int SUBOR_VERZIA = 1;
+
     private final JFrame okno;
     private DefaultListModel<Student> studenti;
     private JList zoznam;
@@ -74,8 +77,14 @@ public class ZoznamStudentov {
 
         if (vysledok == JFileChooser.APPROVE_OPTION) {
             var subor = vyberSuboru.getSelectedFile();
-            try (var zapisovac = new ObjectOutputStream(new FileOutputStream(subor))) {
-                zapisovac.writeObject(this.studenti);
+            try (var zapisovac = new DataOutputStream(new FileOutputStream(subor))) {
+                zapisovac.writeInt(SUBOR_MAGIC_NUMBER);
+                zapisovac.writeInt(SUBOR_VERZIA);
+
+                zapisovac.writeInt(this.studenti.getSize());
+                for (int i = 0; i < this.studenti.getSize(); i++) {
+                    this.studenti.get(i).ulozitDoSuboru(zapisovac);
+                }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this.okno, "Nepodarilo sa ulozit. Chyba: " + e.getMessage());
             }

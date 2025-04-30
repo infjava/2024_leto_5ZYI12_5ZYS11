@@ -1,8 +1,7 @@
-import java.io.Serializable;
+import java.io.DataOutputStream;
+import java.io.IOException;
 
-public class Student implements Serializable {
-    //private static final long serialVersionUID = 3232181867018359766L;
-
+public class Student {
     private final String meno;
     private final String priezvisko;
     private final int rokNarodenia;
@@ -32,5 +31,11 @@ public class Student implements Serializable {
                 ", priezvisko='" + this.priezvisko + '\'' +
                 ", rokNarodenia=" + this.rokNarodenia +
                 '}';
+    }
+
+    public void ulozitDoSuboru(DataOutputStream zapisovac) throws IOException {
+        zapisovac.writeUTF(this.meno);
+        zapisovac.writeUTF(this.priezvisko);
+        zapisovac.writeInt(this.rokNarodenia);
     }
 }
