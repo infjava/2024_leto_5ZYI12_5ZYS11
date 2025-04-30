@@ -13,6 +13,8 @@ public class ZoznamStudentov {
     private JButton pridat;
     private JButton odstranit;
     private JButton upravit;
+    private JButton ulozit;
+    private JButton nacitat;
 
     public ZoznamStudentov() {
         this.okno = new JFrame("Zoznam študentov");
@@ -40,6 +42,17 @@ public class ZoznamStudentov {
         });
 
         this.pridat.addActionListener(e -> this.pridatStudenta());
+
+        this.ulozit.addActionListener(e -> this.ulozitDoSuboru());
+        this.nacitat.addActionListener(e -> this.nacitatZoSuboru());
+    }
+
+    private void nacitatZoSuboru() {
+
+    }
+
+    private void ulozitDoSuboru() {
+
     }
 
     private void vlastnostiSaZmenili() {
